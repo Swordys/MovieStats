@@ -1,6 +1,16 @@
 import React, { Component } from "react";
 
 class MovieItem extends Component {
+  constructor(props) {
+    super(props);
+    this.selectMovie = this.selectMovie.bind(this);
+  }
+
+  selectMovie(e) {
+    e.preventDefault();
+    console.log(this.props);
+  }
+
   render() {
     const { poster } = this.props;
 
@@ -14,7 +24,7 @@ class MovieItem extends Component {
 
     // console.log(this.props);
     return (
-      <div className="movieItem">
+      <div onClick={this.selectMovie} className="movieItem">
         <div style={posterStyle} />
       </div>
     );

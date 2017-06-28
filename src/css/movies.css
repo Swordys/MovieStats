@@ -1,12 +1,19 @@
-.movieWrap {
+.movieWrapMain {
   margin-top: 10px;
+  position: relative;
+  position: relative;
+  border-radius: 3px;
+}
+
+.movieWrap {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   max-height: 440px;
+  border-radius: 3px;
   overflow-y: scroll;
   box-shadow: inset 0px 36px 48px -41px rgba(0, 0, 0, 0.25);
-  border-radius: 3px;
+  position: relative;
 }
 
 .movieItem {
@@ -17,6 +24,25 @@
   margin: 10px;
   border-radius: 2px;
   cursor: pointer;
+  overflow: hidden;
+  margin-top: 20px;
+  transition: transform 150ms ease-out;
+}
+
+.selectedMovie {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: darkgray;
+  transition: transform 300ms ease-out;
+  transform-origin: top;
+  transform-style: preserve-3d;
+}
+
+.movieItem:hover {
+  transform: scale(1.05);
 }
 
 .movieWrap::-webkit-scrollbar {
@@ -28,6 +54,5 @@
 }
 
 .movieWrap::-webkit-scrollbar-thumb {
-  background-color: rgba(172, 138, 173, 0.5);
-  outline: 1px solid slategrey;
+  background-color: rgba(172, 138, 173, 0.4);
 }

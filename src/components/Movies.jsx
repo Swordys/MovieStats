@@ -26,9 +26,24 @@ class Movies extends Component {
   }
 
   render() {
+    // const selectedActive = {
+    //   opacity: "1",
+    //   zIndex: "1",
+    //   transform: "rotateX(0)"
+    // };
+
+    const selectedHidden = {
+      opacity: "0",
+      zIndex: "-1",
+      transform: "rotateX(35deg)"
+    };
+
     return (
-      <div className="movieWrap">
-        {this.renderMovieItems()}
+      <div className="movieWrapMain">
+        <div className="movieWrap">
+          {this.renderMovieItems()}
+        </div>
+        <div style={selectedHidden} className="selectedMovie" />
       </div>
     );
   }
