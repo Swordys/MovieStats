@@ -23,7 +23,7 @@ class Charto extends Component {
           {
             label: "Popularity",
             backgroundColor: "rgba(172, 138, 173, 0.8)",
-            data: [...movieData.map(mov => mov.popularity.toFixed(2) * 1)]
+            data: [...movieData.map(mov => mov.vote_average)]
           }
         ]
       },
@@ -48,7 +48,7 @@ class Charto extends Component {
         legend: { display: false },
         title: {
           display: true,
-          text: `Most popular movies in ${movieData[0].release_date.substring(
+          text: `Raitings for popular movies in ${movieData[0].release_date.substring(
             0,
             4
           )}`
