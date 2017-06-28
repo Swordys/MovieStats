@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import uuid from "uuid";
 import MovieItem from "./MovieItem";
 import "../css/movies.css";
@@ -49,4 +50,8 @@ class Movies extends Component {
   }
 }
 
-export default Movies;
+const mapStateToProps = state => ({
+  movieData: state.movieList
+});
+
+export default connect(mapStateToProps, null)(Movies);

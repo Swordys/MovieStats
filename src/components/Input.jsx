@@ -1,5 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Axios from "axios";
+
+// Actions
+import { getMovies } from "./actions/Actions";
 
 class Input extends Component {
   constructor(props) {
@@ -13,7 +17,9 @@ class Input extends Component {
     let checkRgx = /^(\d{4})$/;
     if (checkRgx.test(year)) {
       if (year * 1 > 1900 && year * 1 < 2017) {
-        this.getMovies(year);
+        const { getMovieList } = this.props;
+        getMovieList(year);
+        // this.getMovies(year);
       }
     }
   }
@@ -43,4 +49,10 @@ class Input extends Component {
   }
 }
 
-export default Input;
+const mapDispatchToProps = dispatch => ({
+  getMovieList: year => {
+    dispatch(getMovies(year));
+  }
+});
+
+export default connect(null, mapDispatchToProps)(Input);

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Chart from "chart.js";
 
 class Charto extends Component {
@@ -72,4 +73,8 @@ class Charto extends Component {
   }
 }
 
-export default Charto;
+const mapStateToProps = state => ({
+  movieData: state.movieList
+});
+
+export default connect(mapStateToProps, null)(Charto);
