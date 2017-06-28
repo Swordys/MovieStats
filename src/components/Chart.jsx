@@ -21,7 +21,7 @@ class Charto extends Component {
         labels: [...movieData.map(mov => mov.title)],
         datasets: [
           {
-            label: "Popularity",
+            label: "Raiting",
             backgroundColor: "rgba(172, 138, 173, 0.8)",
             data: [...movieData.map(mov => mov.vote_average)]
           }
