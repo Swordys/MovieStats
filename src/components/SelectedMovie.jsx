@@ -11,10 +11,14 @@ class SelectedMovie extends Component {
     const { selectedMovie } = this.props;
     if (Object.keys(selectedMovie).length > 0) {
       console.log(selectedMovie);
+      let baseBack = "http://image.tmdb.org/t/p/w780";
       return {
         opacity: "1",
         zIndex: "1",
-        transform: "rotateX(0)"
+        transform: "rotateX(0)",
+        background: `url(${baseBack + selectedMovie.backdrop_path})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center center"
       };
     }
     return {
