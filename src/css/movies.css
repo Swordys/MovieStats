@@ -39,6 +39,8 @@
   transition: all 700ms ease-in-out;
   transform-origin: top;
   transform-style: preserve-3d;
+  border-radius: 3px;
+  overflow: hidden;
 }
 
 .movieItem:hover {
