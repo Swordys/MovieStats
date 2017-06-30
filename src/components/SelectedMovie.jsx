@@ -22,6 +22,8 @@ class SelectedMovie extends Component {
 
   renderStyle(loc) {
     const { selected } = this.state;
+    const { selectedMovie } = this.props;
+    const baseBack = "http://image.tmdb.org/t/p/w780";
     if (selected) {
       if (loc === "wrap") {
         return {
@@ -37,8 +39,7 @@ class SelectedMovie extends Component {
           left: "0",
           height: "100%",
           width: "100%",
-          background: `url(${"http://image.tmdb.org/t/p/w780" +
-            this.props.selectedMovie.backdrop_path})`,
+          background: `url(${baseBack + selectedMovie.backdrop_path})`,
           transform: "scale(1)",
           transition: "transform 400ms ease-out",
           transitionDelay: "100ms",
