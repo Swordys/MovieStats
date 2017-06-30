@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
+import { selectMovie } from "./actions/Actions";
 
 class MovieItem extends Component {
   constructor(props) {
@@ -7,8 +10,9 @@ class MovieItem extends Component {
   }
 
   selectMovie(e) {
+    const { selectThatMovie, movieId } = this.props;
     e.preventDefault();
-    console.log(this.props);
+    selectThatMovie(movieId);
   }
 
   render() {
@@ -22,7 +26,6 @@ class MovieItem extends Component {
       backgroundPosition: "center center"
     };
 
-    // console.log(this.props);
     return (
       <div onClick={this.selectMovie} className="movieItem">
         <div style={posterStyle} />
@@ -31,4 +34,10 @@ class MovieItem extends Component {
   }
 }
 
-export default MovieItem;
+const mapDispatchToProps = dispatch => ({
+  selectThatMovie: movieId => {
+    dispatch(selectMovie(movieId));
+  }
+});
+
+export default connect(null, mapDispatchToProps)(MovieItem);

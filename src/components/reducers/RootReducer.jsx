@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
-import { getCurrentDate, getMovieList } from "./Reducers";
+import { getMovieList, getSelectedMovie } from "./Reducers";
 
 const rootReducer = combineReducers({
-  currentDate: getCurrentDate,
-  movieList: getMovieList
+  movieList: getMovieList,
+  selectedMovie: getSelectedMovie
 });
 
 export default rootReducer;

@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import uuid from "uuid";
+
 import MovieItem from "./MovieItem";
+import SelectedMovie from "./SelectedMovie";
 import "../css/movies.css";
 
 class Movies extends Component {
@@ -17,6 +19,7 @@ class Movies extends Component {
     return movieData.map(item =>
       <MovieItem
         key={uuid()}
+        movieId={item.id}
         poster={item.poster_path ? basePos + item.poster_path : null}
         title={item.title}
         date={item.release_date}
@@ -27,24 +30,12 @@ class Movies extends Component {
   }
 
   render() {
-    // const selectedActive = {
-    //   opacity: "1",
-    //   zIndex: "1",
-    //   transform: "rotateX(0)"
-    // };
-
-    const selectedHidden = {
-      opacity: "0",
-      zIndex: "-1",
-      transform: "rotateX(35deg)"
-    };
-
     return (
       <div className="movieWrapMain">
         <div className="movieWrap">
           {this.renderMovieItems()}
         </div>
-        <div style={selectedHidden} className="selectedMovie" />
+        <SelectedMovie />
       </div>
     );
   }
