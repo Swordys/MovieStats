@@ -43,7 +43,10 @@ class SelectedMovie extends Component {
           left: "0",
           height: "100%",
           width: "100%",
-          background: `url(${baseBack + selectedMovie.backdrop_path})`,
+          backgroundImage: `linear-gradient(
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)
+    ), url(${baseBack + selectedMovie.backdrop_path})`,
           transform: "scale(1.1)",
           transition: "transform 400ms ease-out",
           transitionDelay: "100ms",
