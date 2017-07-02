@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import "../css/awesome/font-awesome.min.css";
 
 class SelectedMovie extends Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class SelectedMovie extends Component {
       selected: false
     };
     this.renderStyle = this.renderStyle.bind(this);
+    this.closeSelected = this.closeSelected.bind(this);
   }
 
   componentWillReceiveProps(props) {
@@ -28,9 +30,9 @@ class SelectedMovie extends Component {
       if (loc === "wrap") {
         return {
           opacity: "1",
-          zIndex: "1",
+          zIndex: "10",
           backgroundSize: "cover",
-          backgroundPosition: "center center"
+          backgroundPosition: "center center",
         };
       } else if (loc === "img") {
         return {
@@ -52,7 +54,6 @@ class SelectedMovie extends Component {
       if (loc === "wrap") {
         return {
           opacity: "0",
-          zIndex: "-1"
         };
       } else if (loc === "img") {
         return {
@@ -61,10 +62,18 @@ class SelectedMovie extends Component {
           left: "0",
           height: "100%",
           width: "100%",
-          transform: "scale(1.3)"
+          transform: "scale(1.3)",
+          transition: "transform 400ms ease-out"
         };
       }
     }
+  }
+
+  closeSelected() {
+    console.log("close");
+    this.setState({
+      selected: false
+    });
   }
 
   render() {
@@ -79,6 +88,14 @@ class SelectedMovie extends Component {
     } = this.props.selectedMovie;
     const posterLink = "http://image.tmdb.org/t/p/w342";
     console.log(budget, revenue);
+
+    const closeButton = {
+      position: "absolute",
+      top: "10px",
+      right: "10px",
+      color: "white",
+      cursor: "pointer"
+    };
 
     const coverStyle = {
       height: "100%",
@@ -128,15 +145,23 @@ class SelectedMovie extends Component {
         <div style={movieInfoWrap}>
           <div style={coverStyle} />
           <div style={movieInfo}>
+            <i
+              onClick={this.closeSelected}
+              style={closeButton}
+              className="fa fa-times"
+              aria-hidden="true"
+            />
             <h1 style={{ color: "white", textShadow: "0px 1px black" }}>
               {title}
             </h1>
             <div style={{ marginTop: "10px" }}>
               <span style={spanStyle}>
-                {release_date}
+                <i className="fa fa-calendar-o" aria-hidden="true" />
+                {" " + release_date}
               </span>
               <span style={spanStyle}>
-                {runtime + " min"}
+                <i className="fa fa-clock-o" aria-hidden="true" />
+                {" " + runtime + " min"}
               </span>
             </div>
             <div style={{ marginTop: "10px" }}>
