@@ -37,11 +37,9 @@
   top: 0;
   left: 0;
   background: darkgray;
-  transition: all 600ms ease-in-out;
   transform-origin: top;
   transform-style: preserve-3d;
   border-radius: 3px;
-  z-index: 0;
   overflow: hidden;
 }
 

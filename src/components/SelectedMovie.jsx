@@ -19,7 +19,6 @@ class SelectedMovie extends Component {
         selected: true
       });
     }
-    // console.log(selectedMovie);
   }
 
   renderStyle(loc) {
@@ -33,6 +32,7 @@ class SelectedMovie extends Component {
           zIndex: "10",
           backgroundSize: "cover",
           backgroundPosition: "center center",
+          transition: "z-index 400ms step-start, opacity 400ms linear"
         };
       } else if (loc === "img") {
         return {
@@ -54,6 +54,8 @@ class SelectedMovie extends Component {
       if (loc === "wrap") {
         return {
           opacity: "0",
+          zIndex: "-1",
+          transition: "z-index 400ms step-end, opacity 400ms linear"
         };
       } else if (loc === "img") {
         return {
@@ -63,7 +65,9 @@ class SelectedMovie extends Component {
           height: "100%",
           width: "100%",
           transform: "scale(1.3)",
-          transition: "transform 400ms ease-out"
+          background: `url(${selectedMovie.backdrop_path &&
+            baseBack + selectedMovie.backdrop_path})`,
+          transition: "transform 300ms ease-out"
         };
       }
     }
