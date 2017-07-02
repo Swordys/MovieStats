@@ -3,6 +3,7 @@
   position: relative;
   position: relative;
   border-radius: 3px;
+  will-change: transform;
 }
 
 .movieWrap {
@@ -28,6 +29,7 @@
   overflow: hidden;
   margin-top: 20px;
   transition: transform 150ms ease-out;
+  will-change: transform;
 }
 
 .selectedMovie {

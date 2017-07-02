@@ -1,0 +1,13 @@
+.closeBtn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 5px;
+  color: white;
+  cursor: pointer;
+  transition: transform 150ms ease-in-out;
+}
+
+.closeBtn:hover {
+  transform: scale(1.2);
+}

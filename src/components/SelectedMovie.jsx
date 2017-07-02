@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../css/awesome/font-awesome.min.css";
+import "../css/selectedMovie.css";
 
 class SelectedMovie extends Component {
   constructor(props) {
@@ -32,7 +33,8 @@ class SelectedMovie extends Component {
           zIndex: "10",
           backgroundSize: "cover",
           backgroundPosition: "center center",
-          transition: "z-index 400ms step-start, opacity 400ms linear"
+          transition: "z-index 400ms step-start, opacity 400ms linear",
+          willChange: "transform"
         };
       } else if (loc === "img") {
         return {
@@ -47,7 +49,8 @@ class SelectedMovie extends Component {
           transitionDelay: "100ms",
           backgroundSize: "cover",
           backgroundPosition: "center center",
-          filter: "blur(3px)"
+          filter: "blur(3px)",
+          willChange: "transform"
         };
       }
     } else {
@@ -55,7 +58,8 @@ class SelectedMovie extends Component {
         return {
           opacity: "0",
           zIndex: "-1",
-          transition: "z-index 400ms step-end, opacity 400ms linear"
+          transition: "z-index 400ms step-end, opacity 400ms linear",
+          willChange: "transform"
         };
       } else if (loc === "img") {
         return {
@@ -67,7 +71,8 @@ class SelectedMovie extends Component {
           transform: "scale(1.3)",
           background: `url(${selectedMovie.backdrop_path &&
             baseBack + selectedMovie.backdrop_path})`,
-          transition: "transform 300ms ease-out"
+          transition: "transform 300ms ease-out",
+          willChange: "transform"
         };
       }
     }
@@ -93,14 +98,6 @@ class SelectedMovie extends Component {
     const posterLink = "http://image.tmdb.org/t/p/w342";
     console.log(budget, revenue);
 
-    const closeButton = {
-      position: "absolute",
-      top: "10px",
-      right: "10px",
-      color: "white",
-      cursor: "pointer"
-    };
-
     const coverStyle = {
       height: "100%",
       width: "265px",
@@ -111,7 +108,8 @@ class SelectedMovie extends Component {
       overFlow: "hidden",
       backgroundSize: "cover",
       backgroundPosition: "center center",
-      boxShadow: "0px 0px 31px -3px rgba(0,0,0,0.45)"
+      boxShadow: "0px 0px 31px -3px rgba(0,0,0,0.45)",
+      willChange: "transform"
     };
 
     const movieInfoWrap = {
@@ -123,13 +121,13 @@ class SelectedMovie extends Component {
       display: "flex",
       flexDirection: "row",
       justifyContent: "flex-start",
-      alignItems: "flex-start"
+      alignItems: "flex-start",
+      willChange: "transform"
     };
 
     const movieInfo = {
       width: "100%",
       height: "100%",
-      opacity: "1",
       display: "flex",
       flexDirection: "column",
       justifyContent: "flex-start",
@@ -149,12 +147,13 @@ class SelectedMovie extends Component {
         <div style={movieInfoWrap}>
           <div style={coverStyle} />
           <div style={movieInfo}>
-            <i
-              onClick={this.closeSelected}
-              style={closeButton}
-              className="fa fa-times"
-              aria-hidden="true"
-            />
+            <div className="closeBtn">
+              <i
+                onClick={this.closeSelected}
+                className="fa fa-times"
+                aria-hidden="true"
+              />
+            </div>
             <h1 style={{ color: "white", textShadow: "0px 1px black" }}>
               {title}
             </h1>
