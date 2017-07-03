@@ -44,8 +44,8 @@ class SelectedMovie extends Component {
           height: "100%",
           width: "100%",
           backgroundImage: `linear-gradient(
-      rgba(0, 0, 0, 0.7),
-      rgba(0, 0, 0, 0.7)
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
     ), url(${baseBack + selectedMovie.backdrop_path})`,
           transform: "scale(1.1)",
           transition: "transform 400ms ease-out",
@@ -72,8 +72,11 @@ class SelectedMovie extends Component {
           height: "100%",
           width: "100%",
           transform: "scale(1.3)",
-          background: `url(${selectedMovie.backdrop_path &&
-            baseBack + selectedMovie.backdrop_path})`,
+          background: `linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),url(${selectedMovie.backdrop_path &&
+      baseBack + selectedMovie.backdrop_path})`,
           transition: "transform 300ms ease-out",
           willChange: "transform"
         };
