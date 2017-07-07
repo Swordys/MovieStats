@@ -85,7 +85,6 @@ class SelectedMovie extends Component {
   }
 
   closeSelected() {
-    console.log("close");
     this.setState({
       selected: false
     });
@@ -99,7 +98,8 @@ class SelectedMovie extends Component {
       budget,
       overview,
       revenue,
-      runtime
+      runtime,
+      genres
     } = this.props.selectedMovie;
     const posterLink = "http://image.tmdb.org/t/p/w342";
     console.log(budget, revenue);
@@ -118,63 +118,44 @@ class SelectedMovie extends Component {
       willChange: "transform"
     };
 
-    const movieInfoWrap = {
-      boxSizing: "border-box",
-      height: "100%",
-      width: "100%",
-      position: "relative",
-      padding: "20px",
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "flex-start",
-      alignItems: "flex-start",
-      willChange: "transform"
-    };
-
-    const movieInfo = {
-      width: "100%",
-      height: "100%",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "flex-start",
-      alignItems: "flex-start"
-    };
-
-    const spanStyle = {
-      color: "white",
-      marginRight: "10px",
-      fontWeight: "bold",
-      textShadow: "0px 1px black"
-    };
-
     return (
       <div style={this.renderStyle("wrap")} className="selectedMovie">
         <div style={this.renderStyle("img")} />
-        <div style={movieInfoWrap}>
+        <div className="movieInfoWrap">
           <div style={coverStyle} />
-          <div style={movieInfo}>
-            <div className="closeBtn">
-              <i
-                onClick={this.closeSelected}
-                className="fa fa-times"
-                aria-hidden="true"
-              />
+          <div className="movieInfo">
+            <div onClick={this.closeSelected} className="closeBtn">
+              <i className="fa fa-times" aria-hidden="true" />
             </div>
-            <h1 style={{ color: "white", textShadow: "0px 1px black" }}>
+            <h1
+              style={{
+                color: "white",
+                marginBottom: "10px",
+                textShadow: "0px 1px black"
+              }}
+            >
               {title}
             </h1>
+            <div style={{ color: "white" }}>
+              {genres &&
+                genres.map(item =>
+                  <span className="movieGenre" key={item.id}>
+                    {item.name}
+                  </span>
+                )}
+            </div>
             <div style={{ marginTop: "10px" }}>
-              <span style={spanStyle}>
+              <span className="spanStyle">
                 <i className="fa fa-calendar-o" aria-hidden="true" />
                 {" " + release_date}
               </span>
-              <span style={spanStyle}>
+              <span className="spanStyle">
                 <i className="fa fa-clock-o" aria-hidden="true" />
                 {" " + runtime + " min"}
               </span>
             </div>
             <div style={{ marginTop: "10px" }}>
-              <p style={{ color: " white", textShadow: "0px 1px black" }}>
+              <p className="aboutMovie">
                 {overview}
               </p>
             </div>

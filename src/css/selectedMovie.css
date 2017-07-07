@@ -1,3 +1,38 @@
+.movieInfoWrap {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  will-change: transform;
+}
+
+.movieInfo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.spanStyle {
+  color: white;
+  margin-right: 10px;
+  font-weight: bold;
+  text-shadow: 0px 1px black;
+}
+
+.aboutMovie {
+  color: white;
+  font-size: 14px;
+  text-shadow: 0px 1px black;
+}
+
 .closeBtn {
   position: absolute;
   top: 5px;
@@ -10,4 +45,8 @@
 
 .closeBtn:hover {
   transform: scale(1.2);
+}
+
+.movieGenre {
+  margin-right: 5px;
 }
