@@ -22,17 +22,6 @@ class MovieItem extends Component {
     });
   }
 
-  // componentDidMount() {
-  //   const { movieItem } = this.refs;
-  //   Tilt.init(movieItem, {
-  //     max: 25,
-  //     speed: 500,
-  //     scale: 1.05,
-  //     glare: true,
-  //     "max-glare": 0.3
-  //   });
-  // }
-
   selectMovie(e) {
     const { selectThatMovie, movieId } = this.props;
     e.preventDefault();
@@ -40,7 +29,7 @@ class MovieItem extends Component {
   }
 
   render() {
-    const { poster } = this.props;
+    const { poster, delay } = this.props;
     const posterStyle = {
       height: "100%",
       width: "100%",
@@ -55,6 +44,7 @@ class MovieItem extends Component {
         onMouseEnter={this.applyTilt}
         onClick={this.selectMovie}
         className="movieItem"
+        style={{ transitionDelay: `${delay}ms` }}
       >
         <div style={posterStyle} />
       </div>

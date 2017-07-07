@@ -18,6 +18,7 @@ class Movies extends Component {
     const { movieData } = this.props;
     let basePos = "http://image.tmdb.org/t/p/w154";
     let baseBack = "http://image.tmdb.org/t/p/w780";
+    let time = -30;
     return movieData.map(item =>
       <MovieItem
         key={uuid()}
@@ -27,6 +28,7 @@ class Movies extends Component {
         date={item.release_date}
         backdrop={item.backdrop_path ? baseBack + item.backdrop_path : null}
         overview={item.overview}
+        delay={(time += 30)}
       />
     );
   }
@@ -36,7 +38,7 @@ class Movies extends Component {
       <div className="movieWrapMain">
         <ReactCSSTransitionGroup
           transitionName="movieItem"
-          transitionEnterTimeout={300}
+          transitionEnterTimeout={3000}
           transitionLeaveTimeout={300}
           component="div"
           className="movieWrap"
