@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import StarRatingComponent from "react-star-rating-component";
 import { convTime } from "./common/helper.js";
 
 import "../css/awesome/font-awesome.min.css";
@@ -101,7 +102,8 @@ class SelectedMovie extends Component {
       overview,
       revenue,
       runtime,
-      genres
+      genres,
+      vote_average
     } = this.props.selectedMovie;
     const posterLink = "http://image.tmdb.org/t/p/w342";
     console.log(budget, revenue);
@@ -138,7 +140,7 @@ class SelectedMovie extends Component {
             >
               {title}
             </h1>
-            <div style={{ color: "white" }}>
+            <div style={{ color: "white", marginBottom: "5px" }}>
               {genres &&
                 genres.map(item =>
                   <span className="movieGenre" key={item.id}>
@@ -146,9 +148,25 @@ class SelectedMovie extends Component {
                   </span>
                 )}
             </div>
-            <div style={{ marginTop: "10px" }}>
+            <div>
+              <StarRatingComponent
+                name={"movieRating"}
+                value={Math.round(vote_average)}
+                starCount={10}
+                editing={false}
+                renderStarIcon={(index, value) => {
+                  return (
+                    <span
+                      style={{ marginRight: "3.5px", fontSize: "14px" }}
+                      className={index <= value ? "fa fa-star" : "fa fa-star"}
+                    />
+                  );
+                }}
+                emptyStarColor={"#ccc"}
+              />
+            </div>
+            <div style={{ marginTop: "5px" }}>
               <span className="spanStyle">
-                <i className="fa fa-calendar-o" aria-hidden="true" />
                 {release_date && " " + release_date.substring(0, 4)}
               </span>
               <span className="spanStyle">
@@ -156,7 +174,7 @@ class SelectedMovie extends Component {
                 {" " + convTime(runtime)}
               </span>
             </div>
-            <div style={{ marginTop: "10px" }}>
+            <div style={{ marginTop: "15px" }}>
               <p className="aboutMovie">
                 {overview}
               </p>
