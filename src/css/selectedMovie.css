@@ -23,8 +23,8 @@
 .spanStyle {
   color: white;
   margin-right: 10px;
-  font-weight: bold;
   text-shadow: 0px 1px black;
+  font-size: 14px;
 }
 
 .aboutMovie {

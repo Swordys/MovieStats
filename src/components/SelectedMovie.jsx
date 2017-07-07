@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { convTime } from "./common/helper.js";
+
 import "../css/awesome/font-awesome.min.css";
 import "../css/selectedMovie.css";
 
@@ -147,11 +149,11 @@ class SelectedMovie extends Component {
             <div style={{ marginTop: "10px" }}>
               <span className="spanStyle">
                 <i className="fa fa-calendar-o" aria-hidden="true" />
-                {" " + release_date}
+                {release_date && " " + release_date.substring(0, 4)}
               </span>
               <span className="spanStyle">
                 <i className="fa fa-clock-o" aria-hidden="true" />
-                {" " + runtime + " min"}
+                {" " + convTime(runtime)}
               </span>
             </div>
             <div style={{ marginTop: "10px" }}>
