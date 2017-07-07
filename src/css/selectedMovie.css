@@ -1,3 +1,16 @@
+.bkShadow {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    -30deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 5%,
+    rgba(0, 0, 0, 0.2) 80%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
 .movieInfoWrap {
   box-sizing: border-box;
   height: 100%;

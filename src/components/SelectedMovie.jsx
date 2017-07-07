@@ -127,6 +127,7 @@ class SelectedMovie extends Component {
     return (
       <div style={this.renderStyle("wrap")} className="selectedMovie">
         <div style={this.renderStyle("img")} />
+        <div className="bkShadow" />
         <div className="movieInfoWrap">
           <div ref={"movieCover"} style={coverStyle} />
           <div className="movieInfo">
