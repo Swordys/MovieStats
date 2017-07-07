@@ -49,7 +49,8 @@ class SelectedMovie extends Component {
           backgroundImage: `linear-gradient(
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
-    ), url(${baseBack + selectedMovie.backdrop_path})`,
+    ), url(${selectedMovie.backdrop_path &&
+      baseBack + selectedMovie.backdrop_path})`,
           transform: "scale(1.1)",
           transition: "transform 400ms ease-out",
           transitionDelay: "100ms",
@@ -103,7 +104,8 @@ class SelectedMovie extends Component {
       revenue,
       runtime,
       genres,
-      vote_average
+      vote_average,
+      vote_count
     } = this.props.selectedMovie;
     const posterLink = "http://image.tmdb.org/t/p/w342";
     console.log(budget, revenue);
@@ -148,7 +150,12 @@ class SelectedMovie extends Component {
                   </span>
                 )}
             </div>
-            <div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center"
+              }}
+            >
               <StarRatingComponent
                 name={"movieRating"}
                 value={Math.round(vote_average)}
@@ -164,6 +171,16 @@ class SelectedMovie extends Component {
                 }}
                 emptyStarColor={"#ccc"}
               />
+              <span
+                className="spanStyle"
+                style={{
+                  padding: "0",
+                  margin: "1px 0 0 5px",
+                  fontSize: "13px"
+                }}
+              >
+                ({vote_count})
+              </span>
             </div>
             <div style={{ marginTop: "5px" }}>
               <span className="spanStyle">
