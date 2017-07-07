@@ -54,6 +54,7 @@
 
 .movieGenre::after {
   content: " |";
+  color: #ffb400;
   font-size: 10px;
   padding: 5px;
 }

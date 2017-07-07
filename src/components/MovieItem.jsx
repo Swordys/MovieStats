@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Tilt from "vanilla-tilt";
 
 import { selectMovie } from "./actions/Actions";
 
@@ -7,6 +8,17 @@ class MovieItem extends Component {
   constructor(props) {
     super(props);
     this.selectMovie = this.selectMovie.bind(this);
+  }
+
+  componentDidMount() {
+    const { movieItem } = this.refs;
+    Tilt.init(movieItem, {
+      max: 25,
+      speed: 500,
+      scale: 1.05,
+      glare: true,
+      "max-glare": 0.3
+    });
   }
 
   selectMovie(e) {
@@ -27,7 +39,7 @@ class MovieItem extends Component {
     };
 
     return (
-      <div onClick={this.selectMovie} className="movieItem">
+      <div ref="movieItem" onClick={this.selectMovie} className="movieItem">
         <div style={posterStyle} />
       </div>
     );

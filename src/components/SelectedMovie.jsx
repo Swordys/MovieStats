@@ -128,7 +128,7 @@ class SelectedMovie extends Component {
       <div style={this.renderStyle("wrap")} className="selectedMovie">
         <div style={this.renderStyle("img")} />
         <div className="movieInfoWrap">
-          <div style={coverStyle} />
+          <div ref={"movieCover"} style={coverStyle} />
           <div className="movieInfo">
             <div onClick={this.closeSelected} className="closeBtn">
               <i className="fa fa-times" aria-hidden="true" />
