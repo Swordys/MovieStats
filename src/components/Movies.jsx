@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import uuid from "uuid";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 import MovieItem from "./MovieItem";
 import SelectedMovie from "./SelectedMovie";
 import "../css/movies.css";
+import "../css/reactTrans.css";
 
 class Movies extends Component {
   constructor(props) {
@@ -32,9 +34,15 @@ class Movies extends Component {
   render() {
     return (
       <div className="movieWrapMain">
-        <div className="movieWrap">
+        <ReactCSSTransitionGroup
+          transitionName="movieItem"
+          transitionEnterTimeout={300}
+          transitionLeaveTimeout={300}
+          component="div"
+          className="movieWrap"
+        >
           {this.renderMovieItems()}
-        </div>
+        </ReactCSSTransitionGroup>
         <SelectedMovie />
       </div>
     );

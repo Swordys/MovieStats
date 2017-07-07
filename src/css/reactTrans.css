@@ -1,0 +1,19 @@
+.movieItem-enter {
+  opacity: 0.01;
+  transform: translate3d(0, 20px, 0);
+}
+
+.movieItem-enter.movieItem-enter-active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: all 300ms ease-in;
+}
+
+.movieItem-leave {
+  opacity: 1;
+}
+
+.movieItem-leave.movieItem-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
