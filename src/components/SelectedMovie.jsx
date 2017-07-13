@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import StarRatingComponent from "react-star-rating-component";
 import { convTime } from "./common/helper.js";
+import Grade from "grade-js";
+
+Grade.
 
 import "../css/awesome/font-awesome.min.css";
 import "../css/selectedMovie.css";
