@@ -4,8 +4,6 @@ import StarRatingComponent from "react-star-rating-component";
 import { convTime } from "./common/helper.js";
 import Grade from "grade-js";
 
-Grade.
-
 import "../css/awesome/font-awesome.min.css";
 import "../css/selectedMovie.css";
 
@@ -21,6 +19,7 @@ class SelectedMovie extends Component {
 
   componentWillReceiveProps(props) {
     const { selectedMovie } = props;
+    const { bkDrop } = this.refs;
     if (Object.keys(selectedMovie).length > 0) {
       this.setState({
         selected: true
@@ -129,7 +128,7 @@ class SelectedMovie extends Component {
 
     return (
       <div style={this.renderStyle("wrap")} className="selectedMovie">
-        <div style={this.renderStyle("img")} />
+        <div ref="bkDrop" style={this.renderStyle("img")} />
         <div className="bkShadow" />
         <div className="movieInfoWrap">
           <div ref={"movieCover"} style={coverStyle} />
