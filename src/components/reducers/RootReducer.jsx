@@ -3,7 +3,7 @@ import { getMovieList, getSelectedMovie } from "./Reducers";
 
 const rootReducer = combineReducers({
   movieList: getMovieList,
-  selectedMovie: getSelectedMovie
+  selectedMovie: getSelectedMovie,
 });
 
 export default rootReducer;

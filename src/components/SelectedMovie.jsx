@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import StarRatingComponent from "react-star-rating-component";
 import { convTime } from "./common/helper.js";
-import Grade from "grade-js";
+import { closeSelected } from "./actions/Actions";
 
 import "../css/awesome/font-awesome.min.css";
 import "../css/selectedMovie.css";
@@ -19,7 +19,6 @@ class SelectedMovie extends Component {
 
   componentWillReceiveProps(props) {
     const { selectedMovie } = props;
-    const { bkDrop } = this.refs;
     if (Object.keys(selectedMovie).length > 0) {
       this.setState({
         selected: true
@@ -91,6 +90,8 @@ class SelectedMovie extends Component {
   }
 
   closeSelected() {
+    const { closeMovie } = this.props;
+    closeMovie();
     this.setState({
       selected: false
     });
@@ -101,16 +102,13 @@ class SelectedMovie extends Component {
       title,
       poster_path,
       release_date,
-      budget,
       overview,
-      revenue,
       runtime,
       genres,
       vote_average,
       vote_count
     } = this.props.selectedMovie;
     const posterLink = "http://image.tmdb.org/t/p/w342";
-    console.log(budget, revenue);
 
     const coverStyle = {
       height: "100%",
@@ -128,7 +126,7 @@ class SelectedMovie extends Component {
 
     return (
       <div style={this.renderStyle("wrap")} className="selectedMovie">
-        <div ref="bkDrop" style={this.renderStyle("img")} />
+        <div style={this.renderStyle("img")} />
         <div className="bkShadow" />
         <div className="movieInfoWrap">
           <div ref={"movieCover"} style={coverStyle} />
@@ -210,4 +208,10 @@ const mapStateToProps = state => ({
   selectedMovie: state.selectedMovie
 });
 
-export default connect(mapStateToProps, null)(SelectedMovie);
+const mapDispatchToProps = dispatch => ({
+  closeMovie: () => {
+    dispatch(closeSelected());
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelectedMovie);

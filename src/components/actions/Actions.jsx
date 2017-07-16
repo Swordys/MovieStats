@@ -10,6 +10,10 @@ const selectedMovie = movieObj => ({
   movieObj
 });
 
+export const closeSelected = () => ({
+  type: "CLOSE_SELECTED_MOVIE"
+});
+
 export const getMovies = year => dispatch => {
   let apiKey = "69105684953c2ea2d50e1490cad9437c";
   let call = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=vote_count.desc&primary_release_year=${year}`;
