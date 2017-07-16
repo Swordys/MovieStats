@@ -19,13 +19,15 @@ class Charto extends Component {
     let movieChart = null;
 
     if (budget && revenue) {
+      // budget = Math.round((budget /= 1000000));
+      // revenue = Math.round((revenue /= 1000000));
       movieChart = new Chart(chatCanvas, {
         type: "doughnut",
         data: {
           labels: ["Budget", "Revenue"],
           datasets: [
             {
-              label: "Population (millions)",
+              label: "Movie Revenue",
               backgroundColor: ["#8e5ea2", "#3cba9f"],
               data: [budget, revenue]
             }
@@ -89,7 +91,7 @@ class Charto extends Component {
 
   render() {
     return (
-      <div style={{ padding: "15px 0 15px 0" }}>
+      <div style={{ padding: "20px 0 20px 0" }}>
         <canvas ref={"chart"} />
       </div>
     );

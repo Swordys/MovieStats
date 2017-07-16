@@ -6,7 +6,7 @@
 .movieItem-enter.movieItem-enter-active {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-  transition: all 350ms cubic-bezier(.75, .39, .78, .96);
+  transition: all 350ms cubic-bezier(.2, .84, .74, .88);
 }
 
 .movieItem-leave {
