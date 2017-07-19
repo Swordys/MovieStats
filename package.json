@@ -29,5 +29,5 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "swordys.github.io/movieChart"
+  "homepage": "http://davidsaginashvili.me/movieStats"
 }

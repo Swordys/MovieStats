@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Tilt from "vanilla-tilt";
+// import StarRatingComponent from "react-star-rating-component";
 
 import { selectMovie } from "./actions/Actions";
 
@@ -31,11 +32,11 @@ class MovieItem extends Component {
   render() {
     const { poster, delay } = this.props;
     const posterStyle = {
-      height: "100%",
-      width: "100%",
       background: `url(${poster})`,
       backgroundSize: "cover",
-      backgroundPosition: "center center"
+      backgroundPosition: "center center",
+      transitionDelay: `${delay}ms`,
+      transformStyle: "preserve-3d"
     };
 
     return (
@@ -44,9 +45,17 @@ class MovieItem extends Component {
         onMouseEnter={this.applyTilt}
         onClick={this.selectMovie}
         className="movieItem"
-        style={{ transitionDelay: `${delay}ms` }}
+        style={posterStyle}
       >
-        <div style={posterStyle} />
+        <div
+          style={{
+            height: "70px",
+            width: "70px",
+            background: "white",
+            transform: "translateZ(20px)",
+            opacity: 0
+          }}
+        />
       </div>
     );
   }
