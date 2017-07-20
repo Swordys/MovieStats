@@ -4,6 +4,8 @@ import StarRatingComponent from "react-star-rating-component";
 import { convTime } from "./common/helper.js";
 import { closeSelected } from "./actions/Actions";
 
+import CastMember from "./CastMember";
+
 import "../css/awesome/font-awesome.min.css";
 import "../css/selectedMovie.css";
 
@@ -15,6 +17,7 @@ class SelectedMovie extends Component {
     };
     this.renderStyle = this.renderStyle.bind(this);
     this.closeSelected = this.closeSelected.bind(this);
+    this.renderCast = this.renderCast.bind(this);
   }
 
   componentWillReceiveProps(props) {
@@ -23,6 +26,19 @@ class SelectedMovie extends Component {
     if (Object.keys(selectedMovie).length > 0) {
       this.setState({
         selected: true
+      });
+    }
+  }
+
+  renderCast() {
+    let { cast } = this.props.selectedMovie;
+
+    if (cast) {
+      if (cast.length > 6) {
+        cast = cast.slice(0, 6);
+      }
+      return cast.map(item => {
+        return <CastMember {...item} key={item.id} />;
       });
     }
   }
@@ -197,6 +213,11 @@ class SelectedMovie extends Component {
               <p className="aboutMovie">
                 {overview}
               </p>
+            </div>
+            <div className="movieCast">
+              <div className="castMemberWrap">
+                {this.renderCast()}
+              </div>
             </div>
           </div>
         </div>

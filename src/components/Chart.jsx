@@ -9,6 +9,19 @@ class Charto extends Component {
     this.state = {
       arr: []
     };
+    this.checkRender = this.checkRender.bind(this);
+  }
+
+
+  checkRender() {
+    if (this.props.movieData.length > 0) {
+      return (
+        <div style={{ padding: "20px 0 20px 0" }}>
+          <canvas ref={"chart"} />
+        </div>
+      );
+    }
+    return null;
   }
 
   componentDidUpdate() {
@@ -89,8 +102,8 @@ class Charto extends Component {
 
   render() {
     return (
-      <div style={{ padding: "20px 0 20px 0" }}>
-        <canvas ref={"chart"} />
+      <div>
+        {this.checkRender()}
       </div>
     );
   }

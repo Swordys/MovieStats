@@ -1,7 +1,6 @@
 .movieWrapMain {
   margin-top: 10px;
   position: relative;
-  position: relative;
   border-radius: 3px;
   will-change: transform;
 }
@@ -36,7 +35,6 @@
   align-items: center;
   transform-style: preserve-3d;
 }
-
 
 .selectedMovie {
   height: 100%;
