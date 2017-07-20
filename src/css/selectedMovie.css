@@ -1,3 +1,15 @@
+.movieInfo::-webkit-scrollbar {
+  width: 0.2em;
+}
+
+.movieInfo::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+.movieInfo::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 230, 12, 0.3);
+}
+
 .bkShadow {
   position: absolute;
   height: 100%;
@@ -31,6 +43,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  overflow-y: auto;
 }
 
 .spanStyle {
@@ -50,7 +63,7 @@
   position: absolute;
   top: 5px;
   right: 5px;
-  padding: 5px;
+  padding: 0 5px 5px 5px;
   color: white;
   cursor: pointer;
   transition: transform 150ms ease-in-out;
@@ -63,6 +76,7 @@
 .movieGenre {
   margin-right: 5px;
   font-size: 14px;
+  flex-shrink: 0;
 }
 
 .movieGenre::after {
@@ -79,13 +93,12 @@
 /*MOVIE CAST  */
 
 .movieCast {
-  /* border: 1px solid white; */
   width: 100%;
-  /* overflow: hidden; */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-top: 20px;
+  flex-shrink: 0;
 }
 
 .castMemberWrap {
@@ -110,4 +123,34 @@
 
 .castMember:hover {
   transform: scale(1.2);
+}
+
+/*PLAY TRAILER  */
+
+.movieTrailer {
+  margin-top: 20px;
+  height: 35px;
+  background: #ff0037;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.trailerIcon {
+  border-right: 1px solid white;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  padding: 0 10px 0 5px;
+  margin: 10px;
+}
+
+.trailerText {
+  margin-right: 15px;
+  color: white;
+  font-size: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
 }

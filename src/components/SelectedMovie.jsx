@@ -155,12 +155,15 @@ class SelectedMovie extends Component {
               style={{
                 color: "white",
                 marginBottom: "10px",
-                textShadow: "0px 1px black"
+                textShadow: "0px 1px black",
+                flexShrink: "0"
               }}
             >
               {title}
             </h1>
-            <div style={{ color: "white", marginBottom: "5px" }}>
+            <div
+              style={{ flexShrink: "0", color: "white", marginBottom: "5px" }}
+            >
               {genres &&
                 genres.map(item =>
                   <span className="movieGenre" key={item.id}>
@@ -171,7 +174,8 @@ class SelectedMovie extends Component {
             <div
               style={{
                 display: "flex",
-                alignItems: "center"
+                alignItems: "center",
+                flexShrink: "0"
               }}
             >
               <StarRatingComponent
@@ -194,7 +198,8 @@ class SelectedMovie extends Component {
                 style={{
                   padding: "0",
                   margin: "1px 0 0 5px",
-                  fontSize: "13px"
+                  fontSize: "13px",
+                  flexShrink: "0"
                 }}
               >
                 ({vote_count})
@@ -218,6 +223,16 @@ class SelectedMovie extends Component {
               <div className="castMemberWrap">
                 {this.renderCast()}
               </div>
+            </div>
+            <div className="movieTrailer">
+              <div className="trailerIcon">
+                <i
+                  style={{ fontSize: "12px", color: "white" }}
+                  className="fa fa-play"
+                  aria-hidden="true"
+                />
+              </div>
+              <span className="trailerText">WATCH TRAILER</span>
             </div>
           </div>
         </div>
