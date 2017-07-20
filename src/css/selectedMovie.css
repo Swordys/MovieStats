@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .movieInfo::-webkit-scrollbar {
   width: 0.2em;
 }
@@ -38,6 +42,7 @@
 
 .movieInfo {
   width: 100%;
+  box-sizing: border-box;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -128,7 +133,7 @@
 /*PLAY TRAILER  */
 
 .movieTrailer {
-  margin-top: 20px;
+  margin-top: 10px;
   height: 35px;
   background: #ff0037;
   display: flex;
