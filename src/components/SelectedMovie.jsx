@@ -19,6 +19,7 @@ class SelectedMovie extends Component {
 
   componentWillReceiveProps(props) {
     const { selectedMovie } = props;
+    console.log(selectedMovie);
     if (Object.keys(selectedMovie).length > 0) {
       this.setState({
         selected: true

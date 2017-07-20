@@ -23,8 +23,19 @@ export const getMovies = year => dispatch => {
 };
 
 export const selectMovie = movieId => dispatch => {
-  let call = `https://api.themoviedb.org/3/movie/${movieId}?api_key=69105684953c2ea2d50e1490cad9437c&language=en-US`;
-  Axios.get(call).then(movie => {
-    dispatch(selectedMovie(movie.data));
-  });
+  let call = `https://api.themoviedb.org/3/movie/${movieId}?api_key=69105684953c2ea2d50e1490cad9437c&language=en-US&append_to_response=videos`;
+  let callCast = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=69105684953c2ea2d50e1490cad9437c`;
+  let movieData = null;
+  let movieCast = null;
+  Axios.get(call)
+    .then(movie => {
+      movieData = movie.data;
+      return Axios.get(callCast);
+    })
+    .then(cast => {
+      movieCast = cast.data;
+      dispatch(selectedMovie(Object.assign(movieData, movieCast)));
+      // console.log(movieData);
+      // console.log(movieCast);
+    });
 };

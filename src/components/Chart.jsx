@@ -19,8 +19,6 @@ class Charto extends Component {
     let movieChart = null;
 
     if (budget && revenue) {
-      // budget = Math.round((budget /= 1000000));
-      // revenue = Math.round((revenue /= 1000000));
       movieChart = new Chart(chatCanvas, {
         type: "doughnut",
         data: {
