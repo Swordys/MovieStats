@@ -136,8 +136,7 @@ class SelectedMovie extends Component {
       runtime,
       genres,
       vote_average,
-      vote_count,
-      videos
+      vote_count
     } = this.props.selectedMovie;
     const posterLink = "http://image.tmdb.org/t/p/w342";
 

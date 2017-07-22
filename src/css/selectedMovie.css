@@ -11,7 +11,7 @@
 }
 
 .movieInfo::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 230, 12, 0.3);
+  background-color: rgba(255, 230, 12, 0);
 }
 
 .bkShadow {
