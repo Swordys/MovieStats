@@ -2,10 +2,15 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import StarRatingComponent from "react-star-rating-component";
 import { convTime } from "./common/helper.js";
+
+// Actions
 import { closeSelected } from "./actions/Actions";
 
+// Components
 import CastMember from "./CastMember";
+import MovieTrailer from "./MovieTrailer";
 
+// Styles
 import "../css/awesome/font-awesome.min.css";
 import "../css/selectedMovie.css";
 
@@ -22,10 +27,11 @@ class SelectedMovie extends Component {
 
   componentWillReceiveProps(props) {
     const { selectedMovie } = props;
-    console.log(selectedMovie);
+    // console.log(selectedMovie);
     if (Object.keys(selectedMovie).length > 0) {
       this.setState({
-        selected: true
+        selected: true,
+        playTrailer: false
       });
     }
   }
@@ -123,7 +129,8 @@ class SelectedMovie extends Component {
       runtime,
       genres,
       vote_average,
-      vote_count
+      vote_count,
+      videos
     } = this.props.selectedMovie;
     const posterLink = "http://image.tmdb.org/t/p/w342";
 
@@ -140,6 +147,8 @@ class SelectedMovie extends Component {
       boxShadow: "0px 0px 31px -3px rgba(0,0,0,0.45)",
       willChange: "transform"
     };
+
+    console.log(this.state.playTrailer);
 
     return (
       <div style={this.renderStyle("wrap")} className="selectedMovie">
@@ -224,7 +233,11 @@ class SelectedMovie extends Component {
                 {this.renderCast()}
               </div>
             </div>
-            <div className="movieTrailer">
+            <div
+              onClick={() =>
+                !this.state.playTrailer && this.setState({ playTrailer: true })}
+              className="movieTrailer"
+            >
               <div className="trailerIcon">
                 <i
                   style={{ fontSize: "12px", color: "white" }}
@@ -236,6 +249,7 @@ class SelectedMovie extends Component {
             </div>
           </div>
         </div>
+        <MovieTrailer playTrailer={this.state.playTrailer} />
       </div>
     );
   }

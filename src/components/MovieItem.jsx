@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Tilt from "vanilla-tilt";
-// import StarRatingComponent from "react-star-rating-component";
 
 import { selectMovie } from "./actions/Actions";
 
