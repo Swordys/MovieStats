@@ -18,11 +18,13 @@ class SelectedMovie extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: false
+      selected: false,
+      playTrailer: false
     };
     this.renderStyle = this.renderStyle.bind(this);
     this.closeSelected = this.closeSelected.bind(this);
     this.renderCast = this.renderCast.bind(this);
+    this.closeTrailer = this.closeTrailer.bind(this);
   }
 
   componentWillReceiveProps(props) {
@@ -30,8 +32,7 @@ class SelectedMovie extends Component {
     // console.log(selectedMovie);
     if (Object.keys(selectedMovie).length > 0) {
       this.setState({
-        selected: true,
-        playTrailer: false
+        selected: true
       });
     }
   }
@@ -120,6 +121,12 @@ class SelectedMovie extends Component {
     });
   }
 
+  closeTrailer() {
+    this.setState({
+      playTrailer: false
+    });
+  }
+
   render() {
     const {
       title,
@@ -147,8 +154,6 @@ class SelectedMovie extends Component {
       boxShadow: "0px 0px 31px -3px rgba(0,0,0,0.45)",
       willChange: "transform"
     };
-
-    console.log(this.state.playTrailer);
 
     return (
       <div style={this.renderStyle("wrap")} className="selectedMovie">
@@ -249,7 +254,10 @@ class SelectedMovie extends Component {
             </div>
           </div>
         </div>
-        <MovieTrailer playTrailer={this.state.playTrailer} />
+        <MovieTrailer
+          closeTrailer={this.closeTrailer}
+          playTrailer={this.state.playTrailer}
+        />
       </div>
     );
   }
