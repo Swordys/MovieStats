@@ -15,7 +15,10 @@ class MovieTrailer extends Component {
     const { videos } = this.props.selectedMovie;
 
     if (videos && videos.results) {
-      let key = videos.results[0].key;
+      let key = "";
+      if (videos.results.length > 0) {
+        key = videos.results[0].key;
+      }
       return (
         <iframe
           title="movieTrailer"
