@@ -39,3 +39,16 @@ export const selectMovie = movieId => dispatch => {
       // console.log(movieCast);
     });
 };
+
+const actorData = data => ({
+  type: "GET_ACTOR_DATA",
+  data
+});
+
+export const selectActor = actorId => dispatch => {
+  let apiKey = "69105684953c2ea2d50e1490cad9437c";
+  let call = `https://api.themoviedb.org/3/person/${actorId}?api_key=${apiKey}`;
+  Axios.get(call).then(actor => {
+    dispatch(actorData(actor.data));
+  });
+};

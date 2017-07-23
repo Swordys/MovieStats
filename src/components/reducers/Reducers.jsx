@@ -17,3 +17,12 @@ export const getSelectedMovie = (state = {}, action) => {
       return state;
   }
 };
+
+export const getActorData = (state = {}, action) => {
+  switch (action.type) {
+    case "GET_ACTOR_DATA":
+      return action.data;
+    default:
+      return state;
+  }
+};
