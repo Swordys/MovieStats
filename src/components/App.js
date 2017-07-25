@@ -3,6 +3,7 @@ import "../App.css";
 import Input from "./Input.jsx";
 import Charto from "./Chart.jsx";
 import Movies from "./Movies.jsx";
+import SelectedActor from "./SelectedActor.jsx";
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
         <Input />
         <Charto />
         <Movies />
+        <SelectedActor />
       </div>
     );
   }

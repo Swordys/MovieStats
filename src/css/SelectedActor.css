@@ -1,0 +1,66 @@
+.AboutActorText::-webkit-scrollbar {
+  width: 0.4em;
+}
+
+.AboutActorText::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.AboutActorText::-webkit-scrollbar-thumb {
+  background-color: rgba(40, 40, 40, 0.3);
+}
+
+.SelectedActorWrap {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+     /* z-index: -1;         */
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.ActorCard {
+  border: 1px solid green;
+  width: 100%;
+  height: 50%;
+  background: white;
+  box-sizing: border-box;
+  padding: 20px;
+  display: flex;
+}
+
+.ActorPic {
+  height: 270px;
+  width: 200px;
+  background: gray;
+  flex-shrink: 0;
+  margin-right: 20px;
+}
+
+.ActorInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.ActorName {
+  margin-bottom: 5px;
+  font-size: 35px;
+}
+
+.ActorPlace {
+  margin-bottom: 5px;
+}
+
+.ActorBirth {
+  margin-bottom: 20px;
+}
+
+.AboutActorText {
+  font-size: 14px;
+  overflow-y: auto;
+  padding-right: 20px;
+  position: relative;
+  /* box-shadow: inset 0px -54px 36px -41px rgba(0,0,0,0.75); */
+}
