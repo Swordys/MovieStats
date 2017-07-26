@@ -1,10 +1,14 @@
 import { combineReducers } from "redux";
-import { getMovieList, getSelectedMovie, getActorData } from "./Reducers";
+import {
+  getMovieList,
+  getSelectedMovie,
+  getActorData,
+} from "./Reducers";
 
 const rootReducer = combineReducers({
   movieList: getMovieList,
   selectedMovie: getSelectedMovie,
-  actorData: getActorData
+  actorData: getActorData,
 });
 
 export default rootReducer;

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import YouTube from "react-youtube";
 
 class MovieTrailer extends Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class MovieTrailer extends Component {
     };
 
     this.renderPlayer = this.renderPlayer.bind(this);
+    this.closePlayer = this.closePlayer.bind(this);
   }
 
   renderPlayer() {
@@ -19,19 +21,33 @@ class MovieTrailer extends Component {
       if (videos.results.length > 0) {
         key = videos.results[0].key;
       }
+
+      const opts = {
+        height: "100%",
+        width: "100%",
+        playerVars: {
+          autoplay: 0,
+          showinfo: 0,
+          iv_load_policy: 3,
+          color: "white"
+        }
+      };
       return (
-        <iframe
-          title="movieTrailer"
-          id="ytplayer"
-          type="text/html"
-          width="100%"
-          height="100%"
-          src={`https://www.youtube.com/embed/${key}?fs=0&rel=0&showinfo=0&color=white&iv_load_policy=3`}
-          frameBorder="0"
-          allowFullScreen
+        <YouTube
+          ref={"ytbPlayer"}
+          videoId={key}
+          opts={opts}
+          onReady={this.onReady}
         />
       );
     }
+  }
+
+  closePlayer() {
+    const { closeTrailer } = this.props;
+    const { ytbPlayer } = this.refs;
+    closeTrailer();
+    ytbPlayer.internalPlayer.pauseVideo();
   }
 
   render() {
@@ -59,7 +75,7 @@ class MovieTrailer extends Component {
 
     return (
       <div style={playerStyle}>
-        <div onClick={() => this.props.closeTrailer()} className="closeBtn">
+        <div ref="ytbPlayer" onClick={this.closePlayer} className="closeBtn">
           <i className="fa fa-times" aria-hidden="true" />
         </div>
         {this.renderPlayer()}

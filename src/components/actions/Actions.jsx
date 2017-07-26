@@ -35,8 +35,6 @@ export const selectMovie = movieId => dispatch => {
     .then(cast => {
       movieCast = cast.data;
       dispatch(selectedMovie(Object.assign(movieData, movieCast)));
-      // console.log(movieData);
-      // console.log(movieCast);
     });
 };
 
@@ -52,3 +50,4 @@ export const selectActor = actorId => dispatch => {
     dispatch(actorData(actor.data));
   });
 };
+

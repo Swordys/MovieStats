@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import StarRatingComponent from "react-star-rating-component";
 import { convTime } from "./common/helper.js";
-import * as Vibrant from "node-vibrant";
 
 // import src from "../testtt.jpg";
 
@@ -33,14 +32,6 @@ class SelectedMovie extends Component {
   componentWillReceiveProps(props) {
     const { selectedMovie } = props;
     if (Object.keys(selectedMovie).length > 0) {
-      let link = `http://image.tmdb.org/t/p/w780${selectedMovie.backdrop_path}`;
-
-      let vibrant = new Vibrant(link);
-      vibrant.getPalette((err, pallete) => {
-        console.log(pallete.Vibrant.getRgb());
-        console.log(pallete.Muted.getRgb());
-      });
-
       this.setState({
         selected: true
       });

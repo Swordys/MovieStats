@@ -12,7 +12,6 @@ class Charto extends Component {
     this.checkRender = this.checkRender.bind(this);
   }
 
-
   checkRender() {
     if (this.props.movieData.length > 0) {
       return (
@@ -102,7 +101,7 @@ class Charto extends Component {
 
   render() {
     return (
-      <div>
+      <div className='chartWrap'>
         {this.checkRender()}
       </div>
     );
